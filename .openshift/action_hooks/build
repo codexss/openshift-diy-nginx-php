@@ -29,10 +29,10 @@ BISON_VERSION='2.7.1'
 #NODE_VERSION='0.12.0'
 #PHALCON_VERSION='1.3.4'
 
-declare -A PHP_PECL
-declare -A PHP_PECL_CONFIGURE
-PHP_PECL=( ["mongo"]='1.6.4' ["apcu"]='4.0.7' )
-PHP_PECL_CONFIGURE=( )
+#declare -A PHP_PECL
+#declare -A PHP_PECL_CONFIGURE
+#PHP_PECL=( ["mongo"]='1.6.4' ["apcu"]='4.0.7' )
+#PHP_PECL_CONFIGURE=( )
 
 # Setup dir references
 ROOT_DIR=${OPENSHIFT_RUNTIME_DIR}
@@ -46,20 +46,20 @@ export PATH=${ROOT_DIR}/libs/bin:$PATH
 # Load functions
 source ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/build_util
 source ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/build_nginx
-source ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/build_php_libs
-source ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/build_php
+#source ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/build_php_libs
+#source ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/build_php
 
 # Check nginx
 check_nginx
 
 # Check PHP
-check_php
+#check_php
 
 # Check pecl extensions
-for ext in "${!PHP_PECL[@]}"; do
-    check_pecl ${ext} ${PHP_PECL["$ext"]} ${PHP_PECL_CONFIGURE["$ext"]};
-done
+#for ext in "${!PHP_PECL[@]}"; do
+#    check_pecl ${ext} ${PHP_PECL["$ext"]} ${PHP_PECL_CONFIGURE["$ext"]};
+#done
 
 # Extra
-source ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/build_node
-source ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/build_phalcon
+#source ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/build_node
+#source ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/build_phalcon
